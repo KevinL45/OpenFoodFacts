@@ -31,12 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'ratatouille_api.apps.RatatouilleApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ratatouille'
 ]
 
 MIDDLEWARE = [
@@ -73,12 +75,30 @@ WSGI_APPLICATION = 'ratatouille.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+        'default': {
+            'ENGINE': 'djongo',
+            'NAME': 'Ratatouille',
+            'HOST': 'mongodb+srv://test:test@cluster0.ilff3.mongodb.net/?retryWrites=true&w=majority',
+            'USER': 'test',
+            'PASSWORD': 'test'
+            } 
+        }
+
+# DATABASES = {
+#        'default': {
+#            'ENGINE': 'djongo',
+#            'NAME': 'Ratatouille',
+#        }
+# }
 
 
 # Password validation

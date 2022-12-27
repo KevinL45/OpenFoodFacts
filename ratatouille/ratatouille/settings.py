@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     'ratatouille_api.apps.RatatouilleApiConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +51,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 ROOT_URLCONF = 'ratatouille.urls'
 
@@ -87,11 +96,11 @@ DATABASES = {
         'default': {
             'ENGINE': 'djongo',
             'NAME': 'Ratatouille',
-            'HOST': 'mongodb+srv://test:test@cluster0.ilff3.mongodb.net/?retryWrites=true&w=majority',
-            'USER': 'test',
-            'PASSWORD': 'test'
-            } 
+            'CLIENT': {
+                'host': 'mongodb+srv://test:test@cluster0.ilff3.mongodb.net/?retryWrites=true&w=majority',
+            }
         }
+    }
 
 # DATABASES = {
 #        'default': {

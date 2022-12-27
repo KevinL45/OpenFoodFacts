@@ -15,8 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+# from django.contrib.auth.models import User
+from rest_framework import routers
+from ratatouille_api import views
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+# router.register(r'products', views.ProductViewSet)
+
 
 urlpatterns = [
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('ratatouille_api/', include('ratatouille_api.urls')),
     path('admin/', admin.site.urls),
+    path('ratatouille_api/products/', views.products)
 ]

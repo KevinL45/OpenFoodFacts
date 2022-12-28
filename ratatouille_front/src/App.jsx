@@ -5,6 +5,8 @@ import Detail from "./pages/Detail"
 import Auth from "./pages/Auth"
 import Register from './pages/Register';
 import Navbar from "./components/Navbar"
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (

@@ -18,6 +18,8 @@ from django.urls import include, path
 # from django.contrib.auth.models import User
 from rest_framework import routers
 from ratatouille_api import views
+from django.contrib import admin
+from django.urls import path, include
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -28,12 +30,10 @@ router = routers.DefaultRouter()
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('ratatouille_api/', include('ratatouille_api.urls')),
+    path('register/', include('ratatouille_api.urls')),
     path('admin/', admin.site.urls),
     path('ratatouille_api/products/', views.products),
-
     path('ratatouille_api/search/product/<str:product_name>', views.search_product)
-
 
 
 

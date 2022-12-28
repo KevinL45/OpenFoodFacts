@@ -3,6 +3,7 @@ import Home from "./pages/Home"
 import Products from "./pages/Products"
 import Detail from "./pages/Detail"
 import Auth from "./pages/Auth"
+import Register from './pages/Register';
 import Navbar from "./components/Navbar"
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/auth' element={<Auth/>}/>
+        <Route path='/register' element={<Register/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/detail' element={<Detail/>}/>
       </Routes>

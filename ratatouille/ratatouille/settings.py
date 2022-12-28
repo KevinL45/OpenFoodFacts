@@ -99,7 +99,7 @@ DATABASES = {
             'ENGINE': 'djongo',
             'NAME': 'Ratatouille',
             'CLIENT': {
-                'host': 'mongodb+srv://test:test@cluster0.ilff3.mongodb.net/?retryWrites=true&w=majority',
+                'host': 'mongodb://localhost:27017',
             }
         }
     }

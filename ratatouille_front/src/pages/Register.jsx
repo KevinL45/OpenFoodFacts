@@ -21,7 +21,7 @@ function Register() {
         <Form.Control type="password" placeholder="Password" />
     </Form.Group>
     <Button variant="primary" type="submit">
-        Se connecter
+        S'inscrire
     </Button>
     </Form>
   );

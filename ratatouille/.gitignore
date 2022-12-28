@@ -1,5 +1,7 @@
 .env
+../ratatouille_api/node_modules
 ratatouille/__pycache__/**
 ratatouille_api/__pycache__/**
 *.pyc
 __pycache__/
+../../ratatouille_front/node_modules

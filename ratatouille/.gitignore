@@ -1,3 +1,4 @@
 .env
-/ratatouille/__pycache__/
-/ratatouille_api/__pycache__/
+ratatouille/__pycache__/**
+ratatouille_api/__pycache__/**
+*.pyc

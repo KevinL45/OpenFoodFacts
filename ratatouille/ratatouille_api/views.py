@@ -9,6 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from ratatouille_api.models import Product
 from ratatouille_api.serializers import ProductSerializer
+from ratatouille_api.openFoodApi_client import OpenFoodApi
 # from serializers import ProductSerializer
 
 
@@ -19,10 +20,14 @@ def index(request):
 @csrf_exempt
 def products(request):
     if request.method == 'GET':
-        products = Product.objects.all()
-        serializer = ProductSerializer(products, many=True)
-        return JsonResponse(serializer.data, safe=False)
-
+        # products = Product.objects.all()
+        # serializer = ProductSerializer(products, many=True)
+        # return JsonResponse(serializer.data, safe=False)
+        # serializer = ProductSerializer(products, many=True)
+        openFoodApi = OpenFoodApi()
+        data = openFoodApi.findProduct('djndujd')
+        return JsonResponse(data, safe=False)
+        
     if request.method == 'POST':
         product_to_create = Product.objects.create(name= "test")
         product_to_create.save()

@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+OPEN_FOOD_API_URL = 'https://world.openfoodfacts.org'
+
 
 # Application definition
 

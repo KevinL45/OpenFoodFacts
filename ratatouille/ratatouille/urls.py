@@ -24,10 +24,17 @@ router = routers.DefaultRouter()
 # router.register(r'products', views.ProductViewSet)
 
 
+
 urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('ratatouille_api/', include('ratatouille_api.urls')),
     path('admin/', admin.site.urls),
-    path('ratatouille_api/products/', views.products)
+    path('ratatouille_api/products/', views.products),
+
+    path('ratatouille_api/search/product/<str:product_name>', views.search_product)
+
+
+
+
 ]

@@ -48,4 +48,38 @@ def products(request):
 #     serializer_class = ProductSerializer
 #     # permission_classes = [permissions.IsAuthenticated]
 #     permission_classes = [permissions.AllowAny]
+
+
+@csrf_exempt
+def search_product(request, product_name):
+    if request.method == 'GET':
+        # products = Product.objects.all()
+        # serializer = ProductSerializer(products, many=True)
+        # return JsonResponse(serializer.data, safe=False)
+        # serializer = ProductSerializer(products, many=True)
+        openFoodApi = OpenFoodApi()
+        data = openFoodApi.findProduct(product_name)
+        return JsonResponse(data, safe=False)
+        
+    # if request.method == 'POST':
+    #     product_to_create = Product.objects.create(name= "test")
+    #     product_to_create.save()
+    #     # serializer = Product(snippets, many=True)
+    #     return JsonResponse("OK", safe=False)
+
     
+# def substitutes(request):
+#      if request.method == 'GET':
+#         # products = Product.objects.all()
+#         # serializer = ProductSerializer(products, many=True)
+#         # return JsonResponse(serializer.data, safe=False)
+#         # serializer = ProductSerializer(products, many=True)
+#         openFoodApi = OpenFoodApi()
+#         data = openFoodApi.findSubtitute()
+#         return JsonResponse(data, safe=False)
+        
+#     if request.method == 'POST':
+#         product_to_create = Product.objects.create(name= "test")
+#         product_to_create.save()
+#         # serializer = Product(snippets, many=True)
+#         return JsonResponse("OK", safe=False)

@@ -2,4 +2,4 @@
 ratatouille/__pycache__/**
 ratatouille_api/__pycache__/**
 *.pyc
-__pycache__/  
+__pycache__/

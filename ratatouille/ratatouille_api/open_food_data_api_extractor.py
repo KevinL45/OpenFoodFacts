@@ -24,6 +24,7 @@ MAP_EXTRACT_DATA_KEY_WITH_PRODUCT_KEY = {
     'store' : 'stores_tags',
     # 'categories': 'teams_tags',
     'ingredients': 'ingredients_analysis',
+    'barcode' : 'code'
 }
 
 def getFieldsToExtract():

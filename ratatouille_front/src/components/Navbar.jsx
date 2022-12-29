@@ -6,10 +6,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { RatatouilleApiClient } from '../services/RatatouilleApiClient';
 
-function BasicExample() {
+function BasicExample({onSearchValue}) {
 
 const[message, setMessage] = useState("")
-const[product, setProducts] = useState()
+const[products, setProducts] = useState()
 let ratatouilleApiClient = new RatatouilleApiClient()
 
 // useEffect(() => {
@@ -19,9 +19,16 @@ let ratatouilleApiClient = new RatatouilleApiClient()
 async function search() {
   console.log("search "  + message)
   if (ratatouilleApiClient != undefined) {
-    let products_temp = await ratatouilleApiClient.searchProduct(message)
-    setProducts(products_temp)
-    console.log(products_temp)
+    try {
+      let products_temp = await ratatouilleApiClient.searchProduct(message)
+      setProducts(products_temp)
+      onSearchValue(products_temp)
+      console.log(products_temp)
+    } catch (error) {
+      setProducts(undefined)
+      onSearchValue(undefined)
+    }
+    
   }
 }
 

@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { RatatouilleApiClient } from '../services/RatatouilleApiClient';
 import {Routes, Route, useNavigate} from 'react-router-dom';
+import Chip from '@material-ui/core/Chip';
 
 function Home() {
 
@@ -46,7 +47,7 @@ function Home() {
                         Some quick example text to build on the card title and make up the
                         bulk of the card's content.
                       </Card.Text>
-                      <span>{product.categories}</span>
+                      {product.categories.split(',').map(elem => <Chip label={elem} variant="outlined" />)}
                       <Button variant="primary" onClick={() => onClickDetail(product._id)}>Detail</Button>
                     </Card.Body>
                   </Card>

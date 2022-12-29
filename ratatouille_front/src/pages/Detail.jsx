@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useLayoutEffect } from "react";
 import Card from 'react-bootstrap/Card';
 import { RatatouilleApiClient } from "../services/RatatouilleApiClient";
+import Chip from '@material-ui/core/Chip';
 
 
 function Detail() {
@@ -26,8 +27,6 @@ function Detail() {
 
     // const {product_id} = route.params;
 
-
-
     return (
       <div className="App">
           { product != undefined ?
@@ -48,9 +47,11 @@ function Detail() {
                     <span>Nutriscore not Found</span>
                   }
               </Card.Text>
-              <span>categories : {product.categories.reduce((chain, elem) => chain + ", " + elem)}</span>
+              {/* <span>categories : {product.categories.reduce((chain, elem) => chain + ", " + elem)}</span> */}
+              <span>categories : {product.categories.map(elem => <Chip label={elem} variant="outlined" />)}</span>
               <br/><br/>
-              <span>magasins : {product.store.reduce((chain, elem) => chain + ", " + elem)}</span>
+              {/* <span>magasins : {product.store.reduce((chain, elem) => chain + ", " + elem)}</span> */}
+              <span>magasins : {product.store.map(elem => <Chip label={elem} variant="outlined" />)}</span>
               <br/><br/>
             </Card.Body>
           </Card>

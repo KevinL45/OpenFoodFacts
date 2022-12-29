@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function Products() {
+
+  const[products, setProducts] = useState(undefined)
+
   return (
     <div className="App">
             <Card style={{ width: '18rem' }}>

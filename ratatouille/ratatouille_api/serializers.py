@@ -1,4 +1,4 @@
-from ratatouille_api.models import Product
+from ratatouille_api.models import Product, Menu
 from rest_framework import serializers
 from ratatouille_api.models import User
 
@@ -19,3 +19,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     # def create (self, validated_data):
     #     return User.objects.create_user(validated_data)
+        fields = ['_id', 'name', 'link', 'users', 'ingredients', 'store', 'categories']
+
+class MenuSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Menu
+        fields = ['_id', 'name', 'dishes']

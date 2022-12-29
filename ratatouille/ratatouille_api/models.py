@@ -15,11 +15,11 @@ class Product(models.Model):
     _id = models.ObjectIdField()
     name = models.TextField(max_length= 255, null=False, blank=False)
     link = models.TextField(max_length= 255, null=False, blank=False)
-    price = models.FloatField(default=[])
-    users = models.JSONField(default=[])
-    ingredients = models.JSONField(default=[])
-    store = models.JSONField(default=[])
-    categories = models.JSONField(default=[])
+    # price = models.FloatField(default=[])
+    users = models.JSONField()
+    ingredients = models.JSONField()
+    store = models.JSONField()
+    categories = models.JSONField()
 
     def __str__(self):
         return self.name
@@ -40,7 +40,7 @@ class User(models.Model):
 class Menu(models.Model):
     _id = models.ObjectIdField()
     name = models.TextField(max_length= 255, null=False, blank=False)
-    dishes = models.JSONField(default=[])
+    dishes = models.JSONField()
 
     def __str__(self):
         return self.name

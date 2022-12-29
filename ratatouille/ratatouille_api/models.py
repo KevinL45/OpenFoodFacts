@@ -1,6 +1,7 @@
 # from django.db import models
 from djongo import models
 
+
 # Create your models here.
 # class Product(models.Model): 
 #     _id = models.ObjectIdField()
@@ -24,15 +25,19 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
-# class User(models.Model):
-#     _id = models.ObjectIdField()
-#     firstname = models.TextField(max_length= 255, null=False, blank=False)
-#     lastname = models.TextField(max_length= 255, null=False, blank=False)
-#     email = models.EmailField(max_length= 255, null=False, blank=False)
-#     password = models.TextField(max_length= 255, null=False, blank=False)
 
-#     def __str__(self):
-#         return self.firstname
+class User(models.Model):
+    _id = models.ObjectIdField()
+    firstname = models.TextField(max_length= 255, null=False, blank=False)
+    lastname = models.TextField(max_length= 255, null=False, blank=False)
+    email = models.EmailField(max_length= 255, null=False, blank=False)
+    password = models.TextField(max_length= 255, null=False, blank=False)
+
+    def __str__(self):
+        return self.firstname
+    
+    def create_user(self, firstname, lastname, email, password):
+        return self.create_user(firstname, lastname, email, password)
 
 class Menu(models.Model):
     _id = models.ObjectIdField()

@@ -33,6 +33,9 @@ class User(models.Model):
 
     def __str__(self):
         return self.firstname
+    
+    def create_user(self, firstname, lastname, email, password):
+        return self.create_user(firstname, lastname, email, password)
 
 class Menu(models.Model):
     _id = models.ObjectIdField()

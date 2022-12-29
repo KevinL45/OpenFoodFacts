@@ -11,6 +11,10 @@ from ratatouille_api.models import Product
 from ratatouille_api.serializers import ProductSerializer
 from ratatouille_api.openFoodApi_client import OpenFoodApi
 # from serializers import ProductSerializer
+from rest_framework.generics import GenericAPIView
+from ratatouille_api.serializers import UserSerializer
+from rest_framework import response, status
+from ratatouille_api.models import User
 
 
 
@@ -76,3 +80,28 @@ def search_product(request, product_name):
 #         product_to_create.save()
 #         # serializer = Product(snippets, many=True)
 #         return JsonResponse("OK", safe=False)
+
+class RegisterAPIView(GenericAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
+
+    def post(self,request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return response.Response(serializer.data, status=status.HTTP_201_CREATED)
+        return response.Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+# def register(request):
+#     user_to_create = User.objects.create(request.body())
+#     user_to_create.save()
+#     return JsonResponse("OK", safe=False)
+
+
+    
+
+
+
+

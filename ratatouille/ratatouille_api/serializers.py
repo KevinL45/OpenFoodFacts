@@ -17,8 +17,8 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['firstname','lastname','email','password']
 
-    # def create (self, validated_data):
-    #     return User.objects.create_user(validated_data)
+    def create (self, validated_data):
+        return User.objects.create_user(validated_data)
         fields = ['_id', 'name', 'link', 'users', 'ingredients', 'store', 'categories']
 
 class MenuSerializer(serializers.HyperlinkedModelSerializer):

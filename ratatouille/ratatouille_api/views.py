@@ -67,6 +67,14 @@ def search_product(request, product_name):
         openFoodApi = OpenFoodApi()
         data = openFoodApi.findProduct(product_name)
         return JsonResponse(data, safe=False)
+
+
+@csrf_exempt
+def get_products_homepage(request, size_page):
+    if request.method == 'GET':
+        openFoodApi = OpenFoodApi()
+        data = openFoodApi.getProductByPopularity(size_page)
+        return JsonResponse(data, safe=False)
         
 # @csrf_exempt
 # def store_product(request):

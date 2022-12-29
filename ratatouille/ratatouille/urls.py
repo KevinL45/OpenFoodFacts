@@ -33,7 +33,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('ratatouille_api/products/', views.products),
 
-    path('ratatouille_api/search/product/<str:product_name>', views.search_product)
+    path('ratatouille_api/search/product/<str:product_name>', views.search_product),
+    path('ratatouille_api/home/products/<int:size_page>', views.get_products_homepage)
 
 
 

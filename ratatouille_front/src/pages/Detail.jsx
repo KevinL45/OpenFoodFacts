@@ -1,7 +1,13 @@
+import { useParams } from "react-router-dom";
+
 function Detail() {
+
+    // const {product_id} = route.params;
+    let {product_id} = useParams();
+
     return (
       <div className="App">
-  ok
+        <span>{product_id}</span>
       </div>
     );
   }

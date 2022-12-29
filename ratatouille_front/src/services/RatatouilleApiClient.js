@@ -2,17 +2,33 @@
 
 export class RatatouilleApiClient {
 
+    RATATOUILLE_API_URL = "http://localhost:8000/ratatouille_api"
+
     async searchProduct(productName)  {
-    let SEARCH_PRODUCT_URL = `http://localhost:8000/ratatouille_api/search/product/${productName}`
+       let SEARCH_PRODUCT_URL = `${this.RATATOUILLE_API_URL}/search/product/${productName}`
 
        return await fetch(SEARCH_PRODUCT_URL)
             .then(response =>  {
                 if (response.ok) {
                     return response
                 }
-                throw new Error("Fail to find Productd")
+                throw new Error("Fail to find Product")
             }).then(response => {
                 return response.json()
             })
     }
+
+    async getProductsHomepage(size_page)  {
+        let SEARCH_PRODUCT_URL = `${this.RATATOUILLE_API_URL}/home/products/${size_page}`
+    
+        return await fetch(SEARCH_PRODUCT_URL)
+            .then(response =>  {
+                if (response.ok) {
+                    return response
+                }
+                throw new Error("Fail to find Products")
+            }).then(response => {
+                return response.json()
+            })
+        }
 }

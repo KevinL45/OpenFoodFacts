@@ -31,6 +31,8 @@ urlpatterns = [
     path('ratatouille_api/', include('ratatouille_api.urls')),
     path('admin/', admin.site.urls),
     path('ratatouille_api/products/', views.products),
+    path('ratatouille_api/search/product/<str:product_name>', views.search_product),
+    path('register/', views.RegisterAPIView.as_view(),name="Register")
 
 
 

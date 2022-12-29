@@ -21,8 +21,9 @@ from ratatouille_api import views
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
+router.register(r'ratatouille_api/menus', views.MenuViewSet)
+router.register(r'ratatouille_api/products', views.ProductViewSet)
 # router.register(r'products', views.ProductViewSet)
-
 
 
 urlpatterns = [
@@ -30,7 +31,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('ratatouille_api/', include('ratatouille_api.urls')),
     path('admin/', admin.site.urls),
-    path('ratatouille_api/products/', views.products),
+    # path('ratatouille_api/products/', views.products),
 
     path('ratatouille_api/search/product/<str:product_name>', views.search_product)
 

@@ -1,4 +1,5 @@
 import json
+import functools
 
 # KEYS_TO_EXTRACT = [
 #     '_keywords',
@@ -21,16 +22,21 @@ MAP_EXTRACT_DATA_KEY_WITH_PRODUCT_KEY = {
 'ingredients' :'ingredients_original_tags',
 'link': 'image_url',
 'store' : 'stores_tags',
-'categories': 'teams_tags',
+# 'categories': 'teams_tags',
 'ingredients': 'ingredients_analysis',
 }
 
-def extractData(open_data_food_api_product_data):
+def getFieldsToExtract():
+    generated_chain = ""
+    return functools.reduce(lambda chain, elem : chain + ","+elem, MAP_EXTRACT_DATA_KEY_WITH_PRODUCT_KEY.values())
+
+# may be deprecated with diles URI paramter use
+def extractData(open_data_food_api_product_data, nb_element_to_extract= 10):
     data_extracted = []
     if open_data_food_api_product_data != None and len(open_data_food_api_product_data) != 0:
         data= json.loads(open_data_food_api_product_data)
         data_products = data['products']
-        for data_product in data_products[0:10]: 
+        for data_product in data_products[0:nb_element_to_extract]: 
             data_product_extracted = {}
             for key_to_extract in MAP_EXTRACT_DATA_KEY_WITH_PRODUCT_KEY.values():
                 data_extracted_temp = data_product[key_to_extract]

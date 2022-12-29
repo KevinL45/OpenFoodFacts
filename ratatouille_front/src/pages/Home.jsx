@@ -24,7 +24,7 @@ function Home() {
       })
     }
     fetchData()
-  }, [products])
+  }, [])
 
   function onClickDetail(product_id)  {
     navigate(`/detail/${product_id}`);

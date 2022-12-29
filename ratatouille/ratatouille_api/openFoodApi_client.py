@@ -13,7 +13,7 @@ class OpenFoodApi():
         if product_name != None and len(product_name) != 0:
             fields_to_extract = getFieldsToExtract()
             # response = requests.get(self.SEARCH_PRODUCT_URI, {'search_terms': product_name, 'fields': fields_to_extract})
-            response = requests.get(self.SEARCH_PRODUCT_URI, {'search_terms': product_name})
+            response = requests.get(self.SEARCH_PRODUCT_URI, {'search_terms': product_name, 'page_size' :10})
             if response.status_code == 200:
                 datas = extractData(response.text)
                 products_data = mapDatasToProducts(datas)
@@ -22,9 +22,9 @@ class OpenFoodApi():
         return products_data
   
     def getProductByPopularity(self, size_page):
-        response = requests.get(self.SEARCH_PRODUCT_URI, {'size_page': size_page})
+        response = requests.get(self.SEARCH_PRODUCT_URI, {'page_size': size_page})
         if response.status_code == 200:
-            datas = extractData(response.text)
+            datas = extractData(response.text, size_page)
             products_data = mapDatasToProducts(datas)
         else:
             products_data = None

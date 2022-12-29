@@ -7,6 +7,7 @@ class OpenFoodApi():
     # SEARCH_PRODUCT_URI ='https://fr.openfoodfacts.org/cgi/search.pl?search_terms=Danette&search_simple=1&action=process&json=True'
     SEARCH_PRODUCT_URI ='https://fr.openfoodfacts.org/cgi/search.pl?search_simple=1&action=process&sort_by=unique_scans_n&json=true'
     SEARCH_PRODUCT_URI_BY_POPULARITY = 'https://fr.openfoodfacts.org/?sort_by=popularity&json=true'
+    SERACH_PRODUCT_URI_BY_BARCODE = 'https://fr.openfoodfacts.org/api/v2/search?&json=true'
 
     def findProduct(self, product_name): 
         products_data = None
@@ -28,6 +29,16 @@ class OpenFoodApi():
             products_data = response.text
             # products_data = extractData(response.text, page_size)
             # products_data = mapDatasToProducts(datas)
+        else:
+            products_data = None
+        return products_data
+
+    def getProductByBarcode(self, barcode):
+        products_data = None
+        response = requests.get(self.SEARCH_PRODUCT_URI_BY_POPULARITY, {'code': barcode})
+        if response.status_code == 200:
+            datas = extractData(response.text, 1)
+            products_data = mapDatasToProducts(datas)
         else:
             products_data = None
         return products_data

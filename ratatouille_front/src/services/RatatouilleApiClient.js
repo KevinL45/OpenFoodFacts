@@ -31,4 +31,19 @@ export class RatatouilleApiClient {
                 return response.json()
             })
         }
+
+    async searchProductBarcode(barcode)  {
+        let SEARCH_PRODUCT_CODE_URL = `${this.RATATOUILLE_API_URL}/search/product/code/${barcode}`
+    
+        return await fetch(SEARCH_PRODUCT_CODE_URL)
+            .then(response =>  {
+                if (response.ok) {
+                    return response
+                }
+                throw new Error(`Fail to find Product with code ${barcode}`)
+            }).then(response => {
+                return response.json()
+            })
+        }
+
 }

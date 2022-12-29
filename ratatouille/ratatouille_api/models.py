@@ -1,6 +1,7 @@
 # from django.db import models
 from djongo import models
 
+
 # Create your models here.
 # class Product(models.Model): 
 #     _id = models.ObjectIdField()
@@ -23,6 +24,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class User(models.Model):
     _id = models.ObjectIdField()

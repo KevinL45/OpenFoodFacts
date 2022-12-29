@@ -18,6 +18,7 @@ from ratatouille_api.models import User
 
 
 
+
 def index(request):
     return HttpResponse("Hello, world. You're at the ratatouille api index.")
 

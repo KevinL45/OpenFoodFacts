@@ -15,15 +15,15 @@ import functools
 # ]
 
 MAP_EXTRACT_DATA_KEY_WITH_PRODUCT_KEY = {
-#  'categories' : '_keywords',
-# 'product_name_fr',
-'nutriscore': 'nutriscore_data',
-'ecoscore' :'ecoscore_data',
-'ingredients' :'ingredients_original_tags',
-'link': 'image_url',
-'store' : 'stores_tags',
-# 'categories': 'teams_tags',
-'ingredients': 'ingredients_analysis',
+    'name':'product_name_fr',
+    'categories' : '_keywords',
+    'nutriscore': 'nutriscore_data',
+    'ecoscore' :'ecoscore_data',
+    'ingredients' :'ingredients_original_tags',
+    'link': 'image_url',
+    'store' : 'stores_tags',
+    # 'categories': 'teams_tags',
+    'ingredients': 'ingredients_analysis',
 }
 
 def getFieldsToExtract():

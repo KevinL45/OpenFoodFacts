@@ -22,7 +22,7 @@ class OpenFoodApi():
         return products_data
   
     def getProductByPopularity(self, size_page):
-        response = requests.get(self.SEARCH_PRODUCT_URI, {'page_size': size_page})
+        response = requests.get(self.SEARCH_PRODUCT_URI, {'page_size': size_page, 'fields': 'countries,categories,product_name'})
         if response.status_code == 200:
             datas = extractData(response.text, size_page)
             products_data = mapDatasToProducts(datas)

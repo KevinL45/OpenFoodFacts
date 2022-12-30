@@ -46,4 +46,18 @@ export class RatatouilleApiClient {
             })
         }
 
+    async getMenus() {
+        let MENU_URL = `${this.RATATOUILLE_API_URL}/menus/`
+
+        return await fetch(MENU_URL)
+             .then(response =>  {
+                 if (response.ok) {
+                     return response
+                 }
+                 throw new Error("Fail to find menu")
+             }).then(response => {
+                 return response.json()
+             })
+    }
+
 }

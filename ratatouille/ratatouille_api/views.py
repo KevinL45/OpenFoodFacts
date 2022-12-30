@@ -12,9 +12,12 @@ from ratatouille_api.serializers import ProductSerializer, MenuSerializer
 from ratatouille_api.openFoodApi_client import OpenFoodApi
 # from serializers import ProductSerializer
 from rest_framework.generics import GenericAPIView
-from ratatouille_api.serializers import UserSerializer
+from ratatouille_api.serializers import UserSerializer, AuthSerializer
 from rest_framework import response, status
 from ratatouille_api.models import User
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.views import APIView
 
 
 
@@ -133,6 +136,16 @@ class RegisterAPIView(GenericAPIView):
 #     user_to_create.save()
 #     return JsonResponse("OK", safe=False)
 
+class LoginAPIView(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    serializer_class = AuthSerializer
+
+    def post(self,request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid(): 
+            return response.Response(serializer.data, status=status.HTTP_200_OK)
+        return response.Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
     
 
